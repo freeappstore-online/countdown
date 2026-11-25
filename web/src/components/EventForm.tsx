@@ -23,7 +23,9 @@ export default function EventForm({ initial, onSave, onCancel }: EventFormProps)
   useEffect(() => {
     if (initial) {
       const d = new Date(initial.targetDate);
-      setDate(d.toISOString().split("T")[0] ?? "");
+      setDate(
+        `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`,
+      );
       setTime(
         `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`,
       );
